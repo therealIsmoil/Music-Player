@@ -27,10 +27,11 @@
         android:backgroundTint="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:cardCornerRadius="28dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.15"
-        card_view:cardElevation="0dp">
+        card_view:cardElevation="24dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/songImage"
@@ -81,7 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:padding="4dp"
+        android:paddingVertical="16dp"
         android:progressTint="#F95427"
         android:thumb="@drawable/seekbar_thumb"
         app:layout_constraintBottom_toBottomOf="parent"

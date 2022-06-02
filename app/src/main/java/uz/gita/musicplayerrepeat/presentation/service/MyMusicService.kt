@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
 import uz.gita.musicplayerrepeat.BuildConfig
+import uz.gita.musicplayerrepeat.MainActivity
 import uz.gita.musicplayerrepeat.R
 import uz.gita.musicplayerrepeat.data.ActionEnum
 import uz.gita.musicplayerrepeat.utils.MyAppManager
@@ -31,20 +32,30 @@ class MyMusicService : Service() {
     private val scope = CoroutineScope(Dispatchers.IO + Job())
     private var job: Job? = null
     private var pendingIntent: PendingIntent? = null
-    private val intent by lazy {
-        Intent(this, MyMusicService::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        }
-    }
+//    private val intent by lazy {
+//        Intent(this, MyMusicService::class.java).apply {
+//            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//        }
+//    }
 
     override fun onCreate() {
         mediaPlayer = MediaPlayer()
         createChannel()
         createForeGroundService()
-        pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+//        pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
     }
 
     private fun createForeGroundService() {
+        val notifyIntent = Intent(this, MainActivity::class.java)
+        notifyIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+        val pendingIntent = PendingIntent.getActivity(
+            this,
+            0,
+            notifyIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.logo)
             .setContentTitle("Music player")
@@ -130,13 +141,8 @@ class MyMusicService : Service() {
                     }
                 }
                 mediaPlayer.setOnCompletionListener {
-                    if (mediaPlayer.isPlaying)
-                        doneCommand(ActionEnum.NEXT)
-                    else{
-
-                    }
+                    doneCommand(ActionEnum.NEXT)
                     createForeGroundService()
-
                 }
                 createForeGroundService()
             }
@@ -190,8 +196,8 @@ class MyMusicService : Service() {
                 stopSelf()
             }
             ActionEnum.SEEKBAR -> {
-                mediaPlayer.seekTo((MyAppManager.currentTime * 1000))
-
+                if (mediaPlayer.isPlaying)
+                    mediaPlayer.seekTo((MyAppManager.currentTime * 1000))
             }
         }
     }
