@@ -7,6 +7,8 @@ import android.media.MediaMetadataRetriever
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -23,6 +25,13 @@ import uz.gita.musicplayerrepeat.utils.MyAppManager
 
 class MusicListScreen : Fragment(R.layout.screen_music_list) {
     private val binding by viewBinding(ScreenMusicListBinding::bind)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val window = requireActivity().window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.color3)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val adapter = MusicListCursorAdapter()

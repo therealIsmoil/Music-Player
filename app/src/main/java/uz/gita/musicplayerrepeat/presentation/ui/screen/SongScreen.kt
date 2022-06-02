@@ -8,8 +8,10 @@ import android.media.MediaMetadataRetriever
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -28,6 +30,13 @@ class SongScreen : Fragment(R.layout.screen_song) {
     private val scope = CoroutineScope(Dispatchers.IO + Job())
     private var boolNext = false
     private var boolPrev = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val window = requireActivity().window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.color4)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         MyAppManager.isPlayingLiveData.observe(viewLifecycleOwner, isPlayingObserver)
