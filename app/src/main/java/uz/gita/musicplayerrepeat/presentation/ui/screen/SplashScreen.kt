@@ -22,9 +22,9 @@ class SplashScreen : Fragment(R.layout.screen_splash) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         requireActivity().checkPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)) {
             requireContext().getMusicCursor().onEach { cursor ->
-                if (cursor.count == 0){
+                if (cursor.count == 0) {
                     MyAppManager.emptyLiveData.value = Unit
-                }else{
+                } else {
                     MyAppManager.notEmptyLiveData.value = Unit
                 }
                 MyAppManager.cursor = cursor
