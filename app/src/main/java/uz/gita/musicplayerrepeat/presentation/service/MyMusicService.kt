@@ -32,17 +32,12 @@ class MyMusicService : Service() {
     private val scope = CoroutineScope(Dispatchers.IO + Job())
     private var job: Job? = null
     private var pendingIntent: PendingIntent? = null
-//    private val intent by lazy {
-//        Intent(this, MyMusicService::class.java).apply {
-//            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-//        }
-//    }
+
 
     override fun onCreate() {
         mediaPlayer = MediaPlayer()
         createChannel()
         createForeGroundService()
-//        pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
     }
 
     private fun createForeGroundService() {
