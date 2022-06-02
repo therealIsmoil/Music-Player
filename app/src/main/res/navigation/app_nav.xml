@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav"
+    app:startDestination="@id/splashScreen">
+
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="uz.gita.musicplayerrepeat.presentation.ui.screen.SplashScreen"
+        android:label="screen_splash"
+        tools:layout="@layout/screen_splash" >
+        <action
+            android:id="@+id/action_splashScreen_to_musicListScreen"
+            app:destination="@id/musicListScreen"
+            app:popUpTo="@id/splashScreen"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/musicListScreen"
+        android:name="uz.gita.musicplayerrepeat.presentation.ui.screen.MusicListScreen"
+        android:label="screen_music_list"
+        tools:layout="@layout/screen_music_list" >
+        <action
+            android:id="@+id/action_musicListScreen_to_songScreen"
+            app:destination="@id/songScreen" />
+        <action
+            android:id="@+id/action_musicListScreen_to_searchScreen"
+            app:destination="@id/searchScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/songScreen"
+        android:name="uz.gita.musicplayerrepeat.presentation.ui.screen.SongScreen"
+        android:label="screen_song"
+        tools:layout="@layout/screen_song" />
+    <fragment
+        android:id="@+id/searchScreen"
+        android:name="uz.gita.musicplayerrepeat.presentation.ui.screen.SearchScreen"
+        android:label="screen_search"
+        tools:layout="@layout/screen_search" />
+</navigation>

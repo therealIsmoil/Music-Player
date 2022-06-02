@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_new4"
+    android:orientation="vertical"
+    tools:context=".presentation.ui.screen.SearchScreen">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="#303877">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/back"
+                android:layout_width="42dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:padding="10dp"
+                android:src="@drawable/ic_back" />
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:background="@drawable/bg_search"
+                app:iconifiedByDefault="false"
+                android:focusable="true"
+                app:queryBackground="@android:color/transparent"
+                app:queryHint="Search here!"
+                app:searchIcon="@null"
+                app:showDividers="middle" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_music" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

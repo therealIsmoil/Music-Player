@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_new4"
+    android:orientation="vertical"
+    tools:context=".presentation.ui.screen.MusicListScreen">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            android:background="#303877"
+            android:fitsSystemWindows="true">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsingToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:fitsSystemWindows="true"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:gravity="center"
+                        android:text="@string/music_player"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/search"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:background="?android:selectableItemBackground"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_scan"
+                        android:tint="@color/white" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/musicList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            tools:listitem="@layout/item_music" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomPart"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_margin="4dp"
+        android:background="@drawable/bg_bottom_part">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bottomImage"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="12dp"
+            android:backgroundTint="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            card_view:cardElevation="0dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image"
+                android:layout_width="44dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/logo" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/bottomMusicName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/bottomMusicArtist"
+            app:layout_constraintLeft_toRightOf="@id/bottomImage"
+            app:layout_constraintRight_toLeftOf="@id/prev"
+            app:layout_constraintTop_toTopOf="@id/bottomImage"
+            tools:text="Sample music name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/bottomMusicArtist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/bottomImage"
+            app:layout_constraintLeft_toRightOf="@id/bottomImage"
+            app:layout_constraintRight_toLeftOf="@id/prev"
+            app:layout_constraintTop_toBottomOf="@id/bottomMusicName"
+            tools:text="Sample music name" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/next"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="18dp"
+            android:background="?android:selectableItemBackground"
+            android:padding="4dp"
+            android:src="@drawable/ic_next_widget"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/manage"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="18dp"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/ic_play_max"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/next"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/prev"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="18dp"
+            android:background="?android:selectableItemBackground"
+            android:padding="4dp"
+            android:src="@drawable/ic_previous_widget"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/manage"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

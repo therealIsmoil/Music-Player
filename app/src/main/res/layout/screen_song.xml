@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_001"
+    tools:context=".presentation.ui.screen.SongScreen">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/back"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:padding="6dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:backgroundTint="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15"
+        card_view:cardElevation="0dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/songImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/logo" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/songMusicName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card"
+        tools:text="Sample music name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/songArtistName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/songMusicName"
+        tools:text="Sample music name" />
+
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:padding="4dp"
+        android:progressTint="#F95427"
+        android:thumb="@drawable/seekbar_thumb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7" />
+
+    <TextView
+        android:id="@+id/currentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/_00_00_00"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seekBar" />
+
+    <TextView
+        android:id="@+id/totalTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/_00_00_00"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seekBar" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/shuffle"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:padding="2dp"
+        android:src="@drawable/ic_shuffter_sel"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/nextSongScreen"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/nextSongScreen" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/nextSongScreen"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="60dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:padding="6dp"
+        android:src="@drawable/ic_next_widget"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/manageSongScreen"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/manageSongScreen"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:padding="4dp"
+        android:src="@drawable/ic_play_max"
+        app:layout_constraintBottom_toBottomOf="@id/nextSongScreen"
+        app:layout_constraintLeft_toRightOf="@id/prevSongScreen"
+        app:layout_constraintRight_toLeftOf="@id/nextSongScreen"
+        app:layout_constraintTop_toTopOf="@id/nextSongScreen" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/prevSongScreen"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:padding="6dp"
+        android:src="@drawable/ic_previous_widget"
+        app:layout_constraintBottom_toBottomOf="@id/nextSongScreen"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/manageSongScreen"
+        app:layout_constraintTop_toTopOf="@id/nextSongScreen" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/repeat"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:padding="2dp"
+        android:src="@drawable/ic_auto_next_n_repeatqueue"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/nextSongScreen"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/nextSongScreen" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
